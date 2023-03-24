@@ -15,7 +15,9 @@ import { Server, Socket } from 'socket.io';
     origin: '*',
   },
 })
-export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
+export class DefaultGateway
+  implements OnGatewayConnection, OnGatewayDisconnect
+{
   @WebSocketServer()
   server: Server;
 
@@ -37,7 +39,7 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   async handleConnection(client_: Socket, ...args_: any[]) {
-    console.log(`handleConnection => `, client_.id);
+    console.log(`handleConnection to default => `, client_.id);
     client_.emit('fromServer', 'OK');
     for await (const arg of args_) {
       console.log('arg => ', arg);
@@ -45,6 +47,6 @@ export class EventsGateway implements OnGatewayConnection, OnGatewayDisconnect {
   }
 
   async handleDisconnect(client_: Socket) {
-    console.log(`handleDisconnect => `, client_.id);
+    console.log(`handleDisconnect from default => `, client_.id);
   }
 }
