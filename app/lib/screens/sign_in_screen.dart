@@ -77,7 +77,7 @@ class _SignInScreenState extends State<SignInScreen> {
           children: [
             const SizedBox(height: 200),
             const Text(
-              'Sign In',
+              'Hello, World',
               style: TextStyle(fontSize: 30, color: Colors.deepPurple),
             ),
             const SizedBox(height: 100),
